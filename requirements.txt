@@ -6,3 +6,5 @@ pydantic
 python-dotenv
 faker
 mysql-connector-python
+aiomysql
+greenlet
