@@ -1,8 +1,8 @@
 from fastapi import FastAPI
 from core.config import env
-from core.database import engine, init_db
 from contextlib import asynccontextmanager
 from sqlalchemy.exc import SQLAlchemyError
+from src.db import init_db, engine
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
