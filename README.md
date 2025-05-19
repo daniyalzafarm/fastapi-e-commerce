@@ -15,6 +15,7 @@
   - [Inventory](#inventory)
   - [Orders](#orders)
   - [Warehouses](#warehouses)
+- [Entity Relationship Diagram](#entity-relationship-diagram-erd)
 
 ## Setup
 
@@ -136,3 +137,14 @@ fastapi-e-commerce/
 - `GET /warehouses` - List all warehouses (with pagination)
 - `GET /warehouses/{warehouse_id}` - Get warehouse details
 - `POST /warehouses` - Create a new warehouse
+
+## Entity Relationship Diagram (ERD)
+
+![Database ERD](/erd.png)
+
+The above diagram shows the relationships between different entities in our database:
+- Users and their roles
+- Products and categories
+- Orders and order items
+- Warehouses and inventory
+- Inventory logs for tracking changes
