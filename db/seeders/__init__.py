@@ -5,6 +5,7 @@ from src.auth import auth_models
 from src.product import product_models
 
 from .auth_data import ROLES, USERS
+from .order_seeder import seed_order_items, seed_orders
 from .product_data import CATEGORIES, PRODUCTS
 
 
@@ -74,3 +75,9 @@ async def seed_product_data(session: AsyncSession):
     """Seed all product-related data"""
     await seed_categories(session)
     await seed_products(session)
+
+
+async def seed_order_data(session: AsyncSession):
+    """Seed all order-related data"""
+    await seed_orders(session)
+    await seed_order_items(session)
