@@ -1,7 +1,7 @@
 import asyncio
 
-from seeders import seed_auth_data
-from db.base import engine, get_db_session
+from .seeders import seed_auth_data
+from .base import engine, get_db_session
 from src.models import *  # This ensures all models are registered
 
 
