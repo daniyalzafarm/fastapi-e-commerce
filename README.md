@@ -1,5 +1,36 @@
 # E-commerce API
 
+A robust and scalable e-commerce API built with FastAPI, featuring comprehensive inventory management, order processing, and warehouse operations. This API provides a complete solution for managing an e-commerce platform with real-time inventory tracking, order management, and analytics capabilities.
+
+## Core Functionalities
+
+- **User Management**
+  - Role-based access control
+  - User authentication and authorization
+  - Customer profile management
+
+- **Product Management**
+  - Product catalog with categories
+  - Product image handling
+  - Price and inventory tracking
+
+- **Inventory Management**
+  - Real-time stock tracking
+  - Multi-warehouse support
+  - Inventory movement history
+  - Low stock alerts
+
+- **Order Processing**
+  - Order creation and management
+  - Order status tracking
+  - Order history and analytics
+  - Product-wise and category-wise sales analytics
+
+- **Warehouse Operations**
+  - Multiple warehouse support
+  - Warehouse inventory management
+  - Stock transfer between warehouses
+
 ## Table of Contents
 - [Setup](#setup)
 - [Database Migrations](#database-migrations)
