@@ -2,12 +2,7 @@ import asyncio
 from src.db.base import get_db_session, engine
 from seeders import seed_auth_data
 
-# Import all models to ensure they are registered
-from src.auth import User, Role
-from src.order import Order, OrderItem
-from src.product import Product, Category, ProductImage
-from src.inventory import Inventory, InventoryLog
-from src.warehouse import Warehouse
+from src.models import *  # This ensures all models are registered
 
 async def seed_database():
     """Seed the database with initial data"""

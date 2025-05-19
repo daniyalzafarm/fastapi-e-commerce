@@ -3,6 +3,7 @@ from core.config import env
 from contextlib import asynccontextmanager
 from sqlalchemy.exc import SQLAlchemyError
 from src.db import init_db, engine
+from src.models import *  # This ensures all models are registered
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
