@@ -4,6 +4,7 @@ from contextlib import asynccontextmanager
 from sqlalchemy.exc import SQLAlchemyError
 from src.db import init_db, engine
 from src.models import *  # This ensures all models are registered
+from src.routers import include_routers
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -18,6 +19,9 @@ async def lifespan(app: FastAPI):
         print("=== Database connection closed ===")
 
 app = FastAPI(lifespan=lifespan)
+
+# Include all routers
+include_routers(app)
 
 @app.get("/")
 def read_root():
