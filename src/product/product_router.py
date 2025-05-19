@@ -4,21 +4,13 @@ from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from db import get_db_session
-from src.product.product_schemas import (
-    CategoryCreate,
-    CategoryResponse,
-    ProductCreate,
-    ProductDetailResponse,
-    ProductResponse,
-    ProductUpdate,
-)
 
-from . import product_services
+from . import product_schemas, product_services
 
 router = APIRouter(prefix="/products", tags=["products"])
 
 
-@router.get("/", response_model=List[ProductResponse])
+@router.get("/", response_model=List[product_schemas.ProductResponse])
 async def get_products(
     skip: int = Query(0, ge=0),
     limit: int = Query(10, ge=1, le=100),
@@ -27,7 +19,7 @@ async def get_products(
     return await product_services.get_products(db, skip=skip, limit=limit)
 
 
-@router.get("/{product_id}", response_model=ProductDetailResponse)
+@router.get("/{product_id}", response_model=product_schemas.ProductDetailResponse)
 async def get_product_by_id(
     product_id: int,
     db: AsyncSession = Depends(get_db_session),
@@ -38,18 +30,18 @@ async def get_product_by_id(
     return product
 
 
-@router.post("/", response_model=ProductResponse)
+@router.post("/", response_model=product_schemas.ProductResponse)
 async def create_product(
-    product: ProductCreate,
+    product: product_schemas.ProductCreate,
     db: AsyncSession = Depends(get_db_session),
 ):
     return await product_services.create_product(db, product)
 
 
-@router.put("/{product_id}", response_model=ProductResponse)
+@router.put("/{product_id}", response_model=product_schemas.ProductResponse)
 async def update_product(
     product_id: int,
-    product: ProductUpdate,
+    product: product_schemas.ProductUpdate,
     db: AsyncSession = Depends(get_db_session),
 ):
     updated_product = await product_services.update_product(db, product_id, product)
@@ -69,16 +61,16 @@ async def delete_product(
     return {"message": "Product deleted successfully"}
 
 
-@router.get("/categories/", response_model=List[CategoryResponse])
+@router.get("/categories/", response_model=List[product_schemas.CategoryResponse])
 async def get_categories(
     db: AsyncSession = Depends(get_db_session),
 ):
     return await product_services.get_categories(db)
 
 
-@router.post("/categories/", response_model=CategoryResponse)
+@router.post("/categories/", response_model=product_schemas.CategoryResponse)
 async def create_category(
-    category: CategoryCreate,
+    category: product_schemas.CategoryCreate,
     db: AsyncSession = Depends(get_db_session),
 ):
     return await product_services.create_category(db, category)
