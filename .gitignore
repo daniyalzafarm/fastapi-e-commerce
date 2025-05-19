@@ -54,7 +54,3 @@ logs/
 .env.development.local
 .env.test.local
 .env.production.local
-
-# Alembic
-alembic/versions/*.py
-!alembic/versions/.gitkeep

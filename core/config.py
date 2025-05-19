@@ -16,5 +16,8 @@ class Env:
     db_url: str = (
         f"mysql+aiomysql://{db_user}:{db_password}@{db_host}:{db_port}/{db_name}"
     )
+    db_url_alembic: str = (
+        f"mysql+mysqlconnector://{db_user}:{db_password}@{db_host}:{db_port}/{db_name}"
+    )
 
 env = Env()
