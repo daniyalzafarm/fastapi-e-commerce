@@ -3,7 +3,7 @@ from typing import List
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from src.db import get_db_session
+from db import get_db_session
 
 from . import auth_schemas, auth_service
 

@@ -4,7 +4,7 @@ from fastapi import FastAPI
 from sqlalchemy.exc import SQLAlchemyError
 
 from core.config import env
-from src.db import engine, init_db
+from db import engine, init_db
 from src.models import *  # This ensures all models are registered
 from src.routers import include_routers
 
