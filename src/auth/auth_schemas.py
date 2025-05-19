@@ -1,12 +1,16 @@
-from pydantic import BaseModel, EmailStr
 from datetime import datetime
 from typing import Optional
+
+from pydantic import BaseModel, EmailStr
+
 
 class RoleBase(BaseModel):
     name: str
 
+
 class RoleCreate(RoleBase):
     pass
+
 
 class Role(RoleBase):
     id: int
@@ -16,6 +20,7 @@ class Role(RoleBase):
     class Config:
         from_attributes = True
 
+
 class UserBase(BaseModel):
     name: str
     email: EmailStr
@@ -23,8 +28,10 @@ class UserBase(BaseModel):
     address: Optional[str] = None
     role_id: int
 
+
 class UserCreate(UserBase):
     pass
+
 
 class User(UserBase):
     id: int

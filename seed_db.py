@@ -1,8 +1,9 @@
 import asyncio
-from src.db.base import get_db_session, engine
-from seeders import seed_auth_data
 
+from seeders import seed_auth_data
+from src.db.base import engine, get_db_session
 from src.models import *  # This ensures all models are registered
+
 
 async def seed_database():
     """Seed the database with initial data"""
@@ -13,6 +14,7 @@ async def seed_database():
             print("=== Database seeding completed ===")
     finally:
         await engine.dispose()
+
 
 if __name__ == "__main__":
     asyncio.run(seed_database())

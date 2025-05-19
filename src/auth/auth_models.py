@@ -1,8 +1,11 @@
+from datetime import UTC, datetime
+from typing import Optional
+
 from sqlalchemy import ForeignKey, String
 from sqlalchemy.orm import Mapped, mapped_column, relationship
-from datetime import datetime, UTC
-from typing import Optional
+
 from src.db.base import Base
+
 
 class Role(Base):
     __tablename__ = "role"
@@ -11,9 +14,12 @@ class Role(Base):
     name: Mapped[str] = mapped_column(String(50), unique=True)
 
     created_at: Mapped[datetime] = mapped_column(default=lambda: datetime.now(UTC))
-    updated_at: Mapped[datetime] = mapped_column(default=lambda: datetime.now(UTC), onupdate=lambda: datetime.now(UTC))
+    updated_at: Mapped[datetime] = mapped_column(
+        default=lambda: datetime.now(UTC), onupdate=lambda: datetime.now(UTC)
+    )
 
     users: Mapped[list["User"]] = relationship(back_populates="role")
+
 
 class User(Base):
     __tablename__ = "user"
@@ -26,7 +32,9 @@ class User(Base):
     address: Mapped[Optional[str]] = mapped_column(String(255))
 
     created_at: Mapped[datetime] = mapped_column(default=lambda: datetime.now(UTC))
-    updated_at: Mapped[datetime] = mapped_column(default=lambda: datetime.now(UTC), onupdate=lambda: datetime.now(UTC))
+    updated_at: Mapped[datetime] = mapped_column(
+        default=lambda: datetime.now(UTC), onupdate=lambda: datetime.now(UTC)
+    )
 
     orders: Mapped[list["Order"]] = relationship(back_populates="customer")
     role: Mapped["Role"] = relationship(back_populates="users")
